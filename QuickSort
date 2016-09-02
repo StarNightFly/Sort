@@ -1,0 +1,38 @@
+/*
+快速排序
+不稳定
+最好情况O(nlogn):初始序列随机分布，每次分成的两个子区间中元素个数大致相等
+最坏情况O(n^2)：排序数据正序或反序时，递归树高度为n
+平均情况O(nlogn)
+
+*/
+
+template<typename T>
+void MSortClass<T>::QuickSort()
+{
+	QuickSort1(0, length - 1);
+}
+template<typename T>
+void MSortClass<T>::QuickSort1(int s, int t)
+{
+	int i = s;
+	int j = t;
+	RecType<T> tmp;
+	if (s < t)
+	{
+		tmp = R[s];
+		while (i != j)
+		{
+			while (i < j && R[j].key >= tmp.key)
+				j--;
+			R[i] = R[j];
+			while (i < j && R[i].key <= tmp.key)
+				i++;
+			R[j] = i;
+		}
+		R[i] = tmp;
+		QuickSort1(s, i - 1);
+		QuickSort1(i + 1, t);
+	}
+
+}
