@@ -1,0 +1,31 @@
+/*
+冒泡排序
+顺序时最优O(n)
+逆序时最差O(n^2)
+平均O(n^2)
+稳定
+*/
+template<typename T>
+void MSortClass<T>::BubbleSort()
+{
+	int i, j;
+	bool exchange;
+	RecType<T>tmp;
+	for (int i = 0; i < length - 1; i++)
+	{
+		exchange = false;
+		for (j = length - 1; j>i; i--)
+		{
+			if (R[j].key < R[j - 1].key)
+			{
+				tmp = R[j - 1];
+				R[j - 1] = R[j];
+				R[j] = tmp;
+
+				exchange = true;
+			}
+		}
+		if (!exchange)
+			return;
+	}
+}
