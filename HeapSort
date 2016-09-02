@@ -1,0 +1,36 @@
+//构造初始堆
+template<typename T>
+void MSortClass<T>::sift(int low, int high)
+{
+	int i = low;
+	int j = low * 2;
+	RecType<T>tmp = R[i];
+	while (j <= high)
+	{
+		if (j < high && R[j].key < R[j + 1].key)
+			j++;
+		if (tmp.key < R[j].key)
+		{
+			R[i] = R[j];
+			i = j;
+			j = j * 2;
+		}
+	}
+	R[i] = tmp;
+}
+
+template<typename T>
+void MSortClass<T>::HeapSort()
+{
+	int i;
+	RecType tmp<T>;
+	for (int i = length / 2; i >= 1; i--)
+		sift(i, length);
+	for (i = length; i >= 2; i--)
+	{
+		tmp = R[1];
+		R[1] = R[i];
+		R[i] = tmp;
+		sift(1, i - 1);
+	}
+}
