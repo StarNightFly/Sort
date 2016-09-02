@@ -1,0 +1,29 @@
+/*   选择排序  */
+/*
+简单选择排序
+最好情况：O(n^2)
+最坏情况：O(n^2)
+平均情况：O(n^2)
+*/
+template<typename T>
+void MSortClass<T>::SelectSort()
+{
+	int i, j, min;
+	RecType<T> tmp;
+	for (i = 0; i < length - 1; i++)
+	{
+		min = i;
+		for (int j = i + 1; j < length; j++)
+		{
+			if (R[j].key < R[min].key)
+				min = j;
+			if (min != i)
+			{
+				tmp = R[i];
+				R[i] = R[min];
+				R[min] = tmp;
+			}
+		}
+
+	}
+}
